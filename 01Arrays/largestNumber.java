@@ -23,5 +23,6 @@ public class largestNumber {
             arr[i] = sc.nextInt();
         }
         System.out.println("The largest number in the array is : " + largestNum(arr));
+        sc.close();
     }
 }
