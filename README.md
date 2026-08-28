@@ -7,6 +7,7 @@ This repository serves as a record of my learning journey, containing solutions,
 ## Current Progress
 
 - ✅ Arrays
+- ✅ 2D Arrays
 - 🚧 More topics coming soon...
 
 ## Tech Stack
