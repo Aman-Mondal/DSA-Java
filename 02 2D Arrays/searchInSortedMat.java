@@ -15,7 +15,7 @@ public class searchInSortedMat {
         System.out.println("Key not present in Matrix!");
     }
 
-    // Binary Search TC : O(m+n)
+    // Binary Search using top right element TC : O(m+n)
     public static void binarySearch(int[][] arr, int key) {
         int row = 0;
         int col = arr[0].length - 1;
@@ -27,6 +27,23 @@ public class searchInSortedMat {
                 row++;
             } else {
                 col--;
+            }
+        }
+        System.out.println("Key not Fount!");
+    }
+
+    // Binary Search using bottom left element TC : O(m+n)
+    public static void binarySearch2(int[][] arr, int key) {
+        int row = arr.length;
+        int col = 0;
+        while (row >=0 && col < arr[0].length) {
+            if (key == arr[row][col]) {
+                System.out.println(key + " fount at position ( " + row + ", " + col + " )");
+                return;
+            } else if (key > arr[row][col]) {
+                col++;
+            } else {
+                row--;
             }
         }
         System.out.println("Key not Fount!");
