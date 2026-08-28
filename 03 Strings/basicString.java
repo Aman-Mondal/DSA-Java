@@ -22,7 +22,7 @@ public class basicString {
         System.out.print("Enter Name : ");
         String name2 = sc.nextLine();
         System.out.println(name2);
-        // sc.close();
+        
 
         // Concatenate
         System.out.print("Enter Last Name : ");
@@ -31,5 +31,6 @@ public class basicString {
         String fname = sc.next();
         String fullname = fname + " " + lname;
         System.out.println(fullname);
+        sc.close();
     }
 }
