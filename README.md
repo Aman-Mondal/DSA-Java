@@ -8,6 +8,9 @@ This repository serves as a record of my learning journey, containing solutions,
 
 - ✅ Arrays
 - ✅ 2D Arrays
+- ✅ Strings
+- ✅ Recursion
+- ✅ Divide & Conquer
 - 🚧 More topics coming soon...
 
 ## Tech Stack
