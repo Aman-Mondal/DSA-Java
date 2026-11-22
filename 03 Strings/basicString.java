@@ -11,7 +11,7 @@ public class basicString {
         // representation
         // [C means array of characters (char[]), and @55f96302 is a representation
         // based on the object's identity/hash code
-        System.out.println(str + "\n" + str2 + "\n" + str3);
+        System.out.println(str.toString() + "\n" + str2 + "\n" + str3);
 
         // .next() only include first string and ignores rest after a space
         // System.out.print("Enter Name : ");
