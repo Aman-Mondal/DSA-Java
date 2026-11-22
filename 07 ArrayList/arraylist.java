@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class arraylist {
     public static void main(String[] args) {
         ArrayList<String> list = new ArrayList<>();
-        list.add("Aman");
+        list.add("Arcieous");
         list.add("Pickachu");
         System.out.println(list);
         list.set(0,"Alpha");
