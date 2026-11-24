@@ -119,6 +119,18 @@ public class LinkedList {
         return val;
     }
 
+    // Iterative
+    public boolean searchItr(int key) {
+        Node temp = head;
+        while(temp!=null) {
+            if(temp.data==key) {
+                return true;
+            }
+            temp = temp.next;
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addStart(4);
@@ -126,12 +138,13 @@ public class LinkedList {
         ll.addStart(7);
         ll.addEnd(14);
         ll.addMid(12, 1);
+        // ll.printLL();
+        // ll.removeStart();
+        // ll.printLL();
+        // ll.removeEnd();
+        // ll.printLL();
+        // ll.removeMid(2);
         ll.printLL();
-        ll.removeStart();
-        ll.printLL();
-        ll.removeEnd();
-        ll.printLL();
-        ll.removeMid(2);
-        ll.printLL();
+        System.out.println(ll.searchItr(8));
     }
 }
