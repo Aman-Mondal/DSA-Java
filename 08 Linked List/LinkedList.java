@@ -131,6 +131,16 @@ public class LinkedList {
         return false;
     }
 
+    public boolean searchRec(Node head, int key) {
+        if(head == null) {
+            return false;
+        }
+        if(head.data == key) {
+            return true;
+        }
+        return searchRec(head.next,key);
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addStart(4);
@@ -145,6 +155,6 @@ public class LinkedList {
         // ll.printLL();
         // ll.removeMid(2);
         ll.printLL();
-        System.out.println(ll.searchItr(8));
+        System.out.println(ll.searchRec(head,7));
     }
 }
