@@ -43,7 +43,7 @@ public class LinkedList {
             System.out.println("Empty LL");
         }
         Node temp = head;
-        while (head != tail && temp != null) {
+        while (temp != null) {
             System.out.print(temp.data + " -> ");
             temp = temp.next;
         }
@@ -141,6 +141,21 @@ public class LinkedList {
         return searchRec(head.next,key);
     }
 
+    public void reverse() {
+        Node prev = null;
+        Node curr = head;
+        Node tail = head;
+        Node next = null;
+
+        while(curr!=null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addStart(4);
@@ -156,5 +171,7 @@ public class LinkedList {
         // ll.removeMid(2);
         ll.printLL();
         System.out.println(ll.searchRec(head,7));
+        ll.reverse();
+        ll.printLL();
     }
 }
