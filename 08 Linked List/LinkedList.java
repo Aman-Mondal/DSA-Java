@@ -28,10 +28,10 @@ public class LinkedList {
             addStart(data);
         }
         Node temp = head;
-        for (int i = 0; i < pos - 1 && temp!=null; i++) {
+        for (int i = 0; i < pos - 1 && temp != null; i++) {
             temp = temp.next;
         }
-        if(temp==null) {
+        if (temp == null) {
             System.out.println("Invalid Position!");
         }
         newNode.next = temp.next;
@@ -76,26 +76,26 @@ public class LinkedList {
     }
 
     public int removeMid(int pos) {
-        if(head == null) {
+        if (head == null) {
             System.out.println("Empty LL");
             return -1;
         }
-        if(head.next==null) {
+        if (head.next == null) {
             int data = head.data;
             head = tail = head.next;
             return data;
         }
         Node curr = head;
-        for(int i=1;i<pos-1 && curr!=null;i++) {
+        for (int i = 1; i < pos - 1 && curr != null; i++) {
             curr = curr.next;
         }
-        if(curr==null) {
+        if (curr == null) {
             System.out.println("Invalid position!");
-        } else if (curr.next==null) {
+        } else if (curr.next == null) {
             removeEnd();
         }
         int val = curr.next.data;
-        curr.next=curr.next.next;
+        curr.next = curr.next.next;
         return val;
     }
 
@@ -111,7 +111,7 @@ public class LinkedList {
         }
         int val = tail.data;
         Node curr = head;
-        while(curr.next!=tail) {
+        while (curr.next != tail) {
             curr = curr.next;
         }
         tail = curr;
@@ -122,8 +122,8 @@ public class LinkedList {
     // Iterative
     public boolean searchItr(int key) {
         Node temp = head;
-        while(temp!=null) {
-            if(temp.data==key) {
+        while (temp != null) {
+            if (temp.data == key) {
                 return true;
             }
             temp = temp.next;
@@ -132,28 +132,48 @@ public class LinkedList {
     }
 
     public boolean searchRec(Node head, int key) {
-        if(head == null) {
+        if (head == null) {
             return false;
         }
-        if(head.data == key) {
+        if (head.data == key) {
             return true;
         }
-        return searchRec(head.next,key);
+        return searchRec(head.next, key);
     }
 
     public void reverse() {
         Node prev = null;
         Node curr = head;
-        Node tail = head;
         Node next = null;
 
-        while(curr!=null) {
+        while (curr != null) {
             next = curr.next;
             curr.next = prev;
             prev = curr;
             curr = next;
         }
         head = prev;
+    }
+
+    public void removeNthFromEnd(int n) {
+        int size = 0;
+        Node temp = head;
+        while (temp != null) {
+            size += 1;
+            temp = temp.next;
+        }
+        System.out.println(size);
+        if (n == size) { // First Element to be removed
+            head = head.next;
+            return;
+        }
+        int iReq = size - n;
+        Node curr = head;
+        for (int i = 0; i < iReq - 1; i++) {
+            curr = curr.next;
+        }
+        curr.next = curr.next.next;
+        printLL();
     }
 
     public static void main(String[] args) {
@@ -170,8 +190,9 @@ public class LinkedList {
         // ll.printLL();
         // ll.removeMid(2);
         ll.printLL();
-        System.out.println(ll.searchRec(head,7));
+        System.out.println(ll.searchRec(head, 7));
         ll.reverse();
         ll.printLL();
+        ll.removeNthFromEnd(3);
     }
 }
