@@ -176,6 +176,45 @@ public class LinkedList {
         printLL();
     }
 
+    // Check if Palindrome
+
+    // Finding Mid of a LL
+    public Node findMid(Node head) {
+        Node slow = head;
+        Node fast = head;
+        while(fast!=null && fast.next!=null) {
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return slow;
+    }
+
+    public boolean checkPalindrome() {
+        if(head == null || head.next == null) {
+            return true;
+        }
+        Node mid = findMid(head);
+        Node prev = null;
+        Node curr = mid;
+        Node next = null;
+        while(curr!=null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node rtHalf = prev;
+        Node ltHalf = head;
+        while(rtHalf != null) {
+            if(ltHalf.data!=rtHalf.data) {
+                return false;
+            }
+            rtHalf=rtHalf.next;
+            ltHalf=ltHalf.next;
+        }
+        return true;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addStart(4);
@@ -183,16 +222,22 @@ public class LinkedList {
         ll.addStart(7);
         ll.addEnd(14);
         ll.addMid(12, 1);
-        // ll.printLL();
+        
+        ll.addEnd(4);
+        ll.addEnd(3);
+        ll.addEnd(12);
+        ll.addEnd(7);
+        ll.printLL();
+        System.out.println(ll.checkPalindrome());
         // ll.removeStart();
         // ll.printLL();
         // ll.removeEnd();
         // ll.printLL();
         // ll.removeMid(2);
-        ll.printLL();
-        System.out.println(ll.searchRec(head, 7));
-        ll.reverse();
-        ll.printLL();
-        ll.removeNthFromEnd(3);
+        // ll.printLL();
+        // System.out.println(ll.searchRec(head, 7));
+        // ll.reverse();
+        // ll.printLL();
+        // ll.removeNthFromEnd(3);
     }
 }
