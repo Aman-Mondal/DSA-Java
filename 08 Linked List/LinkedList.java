@@ -182,7 +182,7 @@ public class LinkedList {
     public Node findMid(Node head) {
         Node slow = head;
         Node fast = head;
-        while(fast!=null && fast.next!=null) {
+        while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
@@ -191,14 +191,14 @@ public class LinkedList {
     }
 
     public boolean checkPalindrome() {
-        if(head == null || head.next == null) {
+        if (head == null || head.next == null) {
             return true;
         }
         Node mid = findMid(head);
         Node prev = null;
         Node curr = mid;
         Node next = null;
-        while(curr!=null) {
+        while (curr != null) {
             next = curr.next;
             curr.next = prev;
             prev = curr;
@@ -206,14 +206,34 @@ public class LinkedList {
         }
         Node rtHalf = prev;
         Node ltHalf = head;
-        while(rtHalf != null) {
-            if(ltHalf.data!=rtHalf.data) {
+        while (rtHalf != null) {
+            if (ltHalf.data != rtHalf.data) {
                 return false;
             }
-            rtHalf=rtHalf.next;
-            ltHalf=ltHalf.next;
+            rtHalf = rtHalf.next;
+            ltHalf = ltHalf.next;
         }
         return true;
+    }
+
+    // Loop Detetion in LL
+    // Floyd's Cucle finding algo
+    public boolean isCycle() {
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow==fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Remove Cycle
+    public void removeCycle() {
+        
     }
 
     public static void main(String[] args) {
@@ -223,7 +243,7 @@ public class LinkedList {
         ll.addStart(7);
         ll.addEnd(14);
         ll.addMid(12, 1);
-        
+
         ll.addEnd(4);
         ll.addEnd(3);
         ll.addEnd(12);
