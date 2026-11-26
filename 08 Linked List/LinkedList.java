@@ -224,7 +224,7 @@ public class LinkedList {
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
-            if(slow==fast) {
+            if (slow == fast) {
                 return true;
             }
         }
@@ -233,7 +233,27 @@ public class LinkedList {
 
     // Remove Cycle
     public void removeCycle() {
-        
+        boolean cycle = false;
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                cycle = true;
+            }
+        }
+        if (cycle == false) {
+            return;
+        }
+        slow = head;
+        Node prev = null;
+        while (slow != fast) {
+            slow = slow.next;
+            prev = fast;
+            fast = fast.next;
+        }
+        prev.next = null;
     }
 
     public static void main(String[] args) {
