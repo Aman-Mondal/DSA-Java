@@ -256,6 +256,41 @@ public class LinkedList {
         prev.next = null;
     }
 
+    // zig zag LL
+    public void zigzag() {
+        Node mid = null;
+        Node slow = head;
+        Node fast = head;
+        while(fast!=null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        mid = slow;
+        Node next = null;
+        Node prev = null;
+        while(slow!=null) {
+            next = slow.next;
+            slow.next = prev;
+            prev = slow;
+            slow = next;
+        }
+        // prev is node of right 
+        // head is head
+        Node left = head;
+        Node right = prev;
+        Node nextLt, nextRt;
+
+        while(left!=null && right!=null) {
+            nextLt = left.next;
+            left.next = right;
+            nextRt = right.next;
+            right.next = nextLt;
+            left = nextLt;
+            right = nextRt;
+        }
+
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addStart(4);
@@ -269,7 +304,7 @@ public class LinkedList {
         ll.addEnd(12);
         ll.addEnd(7);
         ll.printLL();
-        System.out.println(ll.checkPalindrome());
+        // System.out.println(ll.checkPalindrome());
         // ll.removeStart();
         // ll.printLL();
         // ll.removeEnd();
@@ -280,5 +315,7 @@ public class LinkedList {
         // ll.reverse();
         // ll.printLL();
         // ll.removeNthFromEnd(3);
+        ll.zigzag();
+        ll.printLL();
     }
 }
