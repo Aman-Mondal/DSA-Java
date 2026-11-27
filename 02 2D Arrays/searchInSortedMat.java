@@ -50,6 +50,10 @@ public class searchInSortedMat {
     }
 
     // TC = O(log(m*n))
+    // The 2D matrix must be like Each row is sorted in non-decreasing order.
+    // The first integer of each row is greater than the last integer of the previous row.
+    // Only in this case we can use binary Search cuz technnically its a sorted array
+    
     public boolean searchMatrix(int[][] matrix, int target) {
         int rows = matrix.length;
         int cols = matrix[0].length;
