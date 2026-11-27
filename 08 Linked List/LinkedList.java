@@ -258,14 +258,14 @@ public class LinkedList {
 
     // zig zag LL
     public void zigzag() {
-        Node mid = null;
+        
         Node slow = head;
         Node fast = head;
         while(fast!=null && fast.next != null) {
             fast = fast.next.next;
             slow = slow.next;
         }
-        mid = slow;
+        
         Node next = null;
         Node prev = null;
         while(slow!=null) {
